@@ -6,11 +6,11 @@
 #include <queue>
 #include <tuple>
 using namespace std;
-#define MAX 501
+#define MAX 1500
 
 vector<int> abc(3);
 int sum = 0;
-set<pair<int, int>> visit;
+bool visit[MAX][MAX];
 queue<pair<int, int>> q;
 
 void func(int a, int b) {
@@ -19,9 +19,9 @@ void func(int a, int b) {
 	if (na > nb) {
 		swap(na, nb);
 	}
-	if (visit.find({ na,nb })==visit.end()) {
+	if (!visit[na][nb]) {
 		q.push({ na,nb });
-		visit.insert({ na,nb });
+		visit[na][nb] = true;
 	}
 }
 
@@ -36,7 +36,7 @@ int main() {
 
 	sort(abc.begin(), abc.end());
 	q.push({ abc[0], abc[1] });
-	visit.insert({ abc[0], abc[1] });
+	visit[abc[0]][abc[1]] = true;	
 
 	bool hasRes = false;
 	while (!q.empty()) {
