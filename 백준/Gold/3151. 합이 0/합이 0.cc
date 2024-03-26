@@ -21,19 +21,10 @@ int main() {
 		for (int j = i + 1;j < n;j++) {
 			long long ts = arr[i] + arr[j];
 			long long sn = ts * -1;
-			long long fi = lower_bound(arr.begin(), arr.end(), sn) - arr.begin();
-			long long li = upper_bound(arr.begin(), arr.end(), sn) - arr.begin();
-			li--;
-			int sum = 0;
-			if (fi < n && arr[fi] == sn) {
-				sum = li - fi + 1;
-				if (fi <= i && i <= li)
-					sum--;
-				if (fi <= j && j <= li)
-					sum--;
-			}
-			res += sum;
+			long long fi = lower_bound(arr.begin()+j+1, arr.end(), sn) - arr.begin();
+			long long li = upper_bound(arr.begin()+j+1, arr.end(), sn) - arr.begin();
+			res += li - fi;
 		}
 	}
-	cout << res / 3;
+	cout << res;
 }
