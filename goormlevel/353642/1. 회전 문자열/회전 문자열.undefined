@@ -1,0 +1,17 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input = br.readLine();
+
+		StringBuilder sb = new StringBuilder(input).reverse();
+
+		for(int i=0;i<sb.length();i++){
+			char c = sb.charAt(i);
+			if(c=='6') sb.setCharAt(i, '9');
+			else if(c=='9') sb.setCharAt(i, '6');
+		}
+
+		System.out.println(sb);
+	}
+}
