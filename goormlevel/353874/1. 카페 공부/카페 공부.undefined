@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int h = Integer.parseInt(st.nextToken());
+		int w = Integer.parseInt(st.nextToken());
+		st = new StringTokenizer(br.readLine());
+		int x1 = Integer.parseInt(st.nextToken());
+		int y1 = Integer.parseInt(st.nextToken());
+		st = new StringTokenizer(br.readLine());
+		int x2 = Integer.parseInt(st.nextToken());
+		int y2 = Integer.parseInt(st.nextToken());
+
+		String res = "NO";
+
+		if (canFit(h, w, x1, y1, x2, y2) || canFit(h, w, x1, y1, y2, x2)) {
+        res = "YES";
+    }
+		
+		System.out.println(res);
+	}
+
+	public static boolean canFit(int h, int w, int a, int b, int c, int d){
+// 케이스 1: 두 노트를 가로(또는 세로)로 나란히 배치하는 경우
+    if ((a + c <= w && Math.max(b, d) <= h) || (a + c <= h && Math.max(b, d) <= w)) {
+        return true;
+    }
+    // 케이스 2: 두 노트를 세로(또는 가로)로 쌓아서 배치하는 경우
+    if ((b + d <= h && Math.max(a, c) <= w) || (b + d <= w && Math.max(a, c) <= h)) {
+        return true;
+    }
+		return false;
+	}
+	
+}
