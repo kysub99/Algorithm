@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
+		
+		System.out.println(cal(x,y));
+	}
+
+	public static int cal(int x, int y){
+		if(x==0||y==0)
+			return 0;
+		if(x>0 && y>0)
+			return 1;
+		if(x<0 && y>0)
+			return 2;
+		if(x<0 && y<0)
+			return 3;
+		if(x>0 && y<0)
+			return 4;
+		return 0;
+	}
+}
